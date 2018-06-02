@@ -12,7 +12,7 @@ func TestRunCallsWithSameArgs(t *testing.T) {
 		args = a
 	}
 	c := []Cmd{
-		Command("foo", f),
+		New("foo", f),
 	}
 	a := []string{"foo", "bar"}
 	Run(c, a)
@@ -34,9 +34,9 @@ func TestRunCallsRightCommandOnlyOnce(t *testing.T) {
 		c++
 	}
 	cmd := []Cmd{
-		Command("homura", fa),
-		Command("hikari", fb),
-		Command("pneuma", fc),
+		New("homura", fa),
+		New("hikari", fb),
+		New("pneuma", fc),
 	}
 	Run(cmd, []string{"hikari"})
 	if a != 0 {

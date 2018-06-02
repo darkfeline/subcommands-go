@@ -11,8 +11,8 @@ type Cmd interface {
 	Run([]string)
 }
 
-// Command builds an object that implements Cmd.
-func Command(n string, f func([]string)) Cmd {
+// New builds an object that implements Cmd.
+func New(n string, f func([]string)) Cmd {
 	return &cmd{n, f}
 }
 
