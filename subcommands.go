@@ -48,6 +48,9 @@ func (c *cmd) Run(args []string) {
 // should be the name of the subcommand.  An error is returned if no
 // subcommand is matched.
 func Run(c []Cmd, args []string) error {
+	if len(args) < 1 {
+		return fmt.Errorf("no subcommand argument")
+	}
 	n := args[0]
 	for _, c := range c {
 		if c.Name() == n {
@@ -55,5 +58,5 @@ func Run(c []Cmd, args []string) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("Unmatched command %s", n)
+	return fmt.Errorf("unmatched command %s", n)
 }
